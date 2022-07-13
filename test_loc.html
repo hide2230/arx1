@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>GeoAR.js demo</title>
-    
-    <!-- import aframe and AR.js -->
-    <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
-    <script src='https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js'></script>
-    <script>
-        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
-    </script>
-</head>
-
-<!-- include GeoAR.js -->
-<script src="../../src/gps-entity-place.js"></script>
-<script src="../../src/gps-camera-debug.js"></script>
-<script src="../../src/gps-camera.js"></script>
-<link rel="stylesheet" href="../../src/stylesheets/index.css">
-
-<!-- Dynamically add places from Javascript -->
-<script src="./places.js"></script>
-
-<body style='margin: 0; overflow: hidden;'>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Location-based AR.js demo</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
     <a-scene
-        cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
-        raycaster="objects: [gps-entity-place];"
-        vr-mode-ui="enabled: false"
-		embedded
-		arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-
-        <a-camera gps-camera="minDistance: 20;" rotation-reader>
-		</a-camera>
-	</a-scene>
-</body>
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
+      <a-box
+        material="color: red"
+        gps-entity-place="latitude: 34.6621632; longitude: 133.9311404;"
+        scale="30 30 30"
+      ></a-box>
+      <a-camera gps-camera="minDistance:30; maxDistance:100" rotation-reader> </a-camera>
+    </a-scene>
+  </body>
+</html>
